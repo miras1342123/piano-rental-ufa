@@ -176,3 +176,208 @@
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ─────────────────────────────────────────────
+   Premium motion system
+   ───────────────────────────────────────────── */
+:root {
+  --premium-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --premium-ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal {
+  opacity: 0;
+  transform: translate3d(0, var(--reveal-y, 28px), 0);
+  filter: blur(5px);
+  transition:
+    opacity 900ms var(--premium-ease) var(--reveal-delay, 0ms),
+    transform 900ms var(--premium-ease) var(--reveal-delay, 0ms),
+    filter 900ms var(--premium-ease) var(--reveal-delay, 0ms);
+  will-change: opacity, transform, filter;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  filter: blur(0);
+}
+
+/* Тонкая глубина для основных карточек без вмешательства в layout. */
+main section .bg-white.rounded-2xl,
+main section .bg-white.rounded-3xl,
+main section article,
+main section [class*="rounded-2xl"][class*="shadow"] {
+  transition:
+    transform 500ms var(--premium-ease-soft),
+    box-shadow 500ms var(--premium-ease-soft),
+    border-color 500ms var(--premium-ease-soft);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  main section .bg-white.rounded-2xl:hover,
+  main section .bg-white.rounded-3xl:hover,
+  main section article:hover,
+  main section [class*="rounded-2xl"][class*="shadow"]:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 22px 55px rgba(26, 26, 26, 0.09);
+  }
+
+  a:not(.no-premium-hover) {
+    transition-timing-function: var(--premium-ease);
+  }
+}
+
+/* Плавное появление изображений и лёгкий cinematic zoom. */
+main img {
+  transition: transform 900ms var(--premium-ease), filter 700ms var(--premium-ease), opacity 700ms var(--premium-ease);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  main article:hover img,
+  main .group:hover img {
+    transform: scale(1.025);
+  }
+}
+
+/* Элегантная линия при наведении на навигацию. */
+header nav a {
+  position: relative;
+}
+
+header nav a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 100%;
+  bottom: -7px;
+  height: 1px;
+  border-radius: 999px;
+  background: var(--color-brass);
+  transition: right 450ms var(--premium-ease);
+}
+
+header nav a:hover::after {
+  right: 0;
+}
+
+/* Блик становится чуть дороже: не постоянная анимация, а реакция на hover. */
+.btn-shine::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.14);
+  pointer-events: none;
+}
+
+/* Мягкая подсветка интерактивных круглых кнопок. */
+button:not([disabled]) {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:active {
+  transition-duration: 120ms !important;
+}
+
+/* Для длинных секций — лёгкий фоновой ambient drift. */
+@keyframes ambientDrift {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(0, -10px, 0) scale(1.015); }
+}
+
+.animate-ambient {
+  animation: ambientDrift 12s ease-in-out infinite;
+}
+
+/* Появление плавающего менеджера. */
+@keyframes bubbleIn {
+  from { opacity: 0; transform: translateY(18px) scale(.94); filter: blur(4px); }
+  to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+}
+
+@media (max-width: 767px) {
+  .reveal {
+    transform: translate3d(0, 20px, 0);
+    filter: blur(3px);
+    transition-duration: 700ms;
+  }
+
+  /* На touch-экранах убираем hover-подъём, оставляя только плавное появление. */
+  main section .bg-white.rounded-2xl,
+  main section .bg-white.rounded-3xl,
+  main section article,
+  main section [class*="rounded-2xl"][class*="shadow"] {
+    transition: box-shadow 400ms var(--premium-ease-soft);
+  }
+}
+
+/* Интерактивное мини-пианино: клавиши реагируют на нажатие, не ломая layout. */
+.piano-magic {
+  isolation: isolate;
+}
+
+.piano-key {
+  min-width: 0;
+  touch-action: manipulation;
+}
+
+@media (max-width: 639px) {
+  .piano-magic {
+    padding: 0.875rem;
+  }
+
+  .piano-key span {
+    font-size: 9px;
+  }
+}
+
+
+/* Живой индикатор фоновой музыки */
+.sound-bars {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 12px;
+}
+.sound-bars i {
+  display: block;
+  width: 2px;
+  height: 5px;
+  border-radius: 999px;
+  background: var(--color-brass);
+  animation: soundBar 700ms ease-in-out infinite alternate;
+}
+.sound-bars i:nth-child(2) { animation-delay: 180ms; height: 9px; }
+.sound-bars i:nth-child(3) { animation-delay: 320ms; height: 6px; }
+@keyframes soundBar {
+  to { transform: scaleY(.45); opacity: .55; }
+}
+.review-lightbox img {
+  max-width: 100%;
+  height: auto !important;
+}
+
+/* Lightbox отзывов всегда привязан к окну браузера, а не к секции с Reveal/transform. */
+.review-lightbox {
+  position: fixed !important;
+  inset: 0 !important;
+  height: 100dvh !important;
+  width: 100vw !important;
+  overflow: hidden !important;
+}
+.review-lightbox figure {
+  margin: 0;
+}
+.review-lightbox-image {
+  display: block;
+  width: auto !important;
+  height: auto !important;
+  max-width: calc(100vw - 24px) !important;
+  max-height: calc(100dvh - 96px) !important;
+}
+@media (min-width: 640px) {
+  .review-lightbox-image {
+    max-width: calc(100vw - 48px) !important;
+    max-height: calc(100dvh - 120px) !important;
+  }
+}

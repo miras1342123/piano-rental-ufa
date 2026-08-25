@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { Send, CheckCircle, MessageCircle } from 'lucide-react';
+import PianoMagic from '../ui/PianoMagic';
 import Button from '../ui/Button';
 import { contacts } from '../../data/contacts';
 
@@ -94,7 +95,7 @@ export default function Hero() {
           </div>
         </div>
 
-                <div className="order-1 lg:order-2 flex justify-center reveal-item opacity-0">
+                <div className="order-1 lg:order-2 flex w-full flex-col items-center justify-center gap-6 reveal-item opacity-0">
           <div className="relative w-full max-w-lg">
             <div className="relative aspect-[4/3] bg-gradient-to-br from-graphite/10 to-brass/10 rounded-3xl overflow-hidden shadow-2xl ring-1 ring-graphite/5">
               <img
@@ -136,6 +137,10 @@ export default function Hero() {
                 <p className="text-xs text-graphite/50">клавиш с молоточками</p>
               </div>
             </div>
+          </div>
+
+          <div className="w-full max-w-lg">
+            <PianoMagic />
           </div>
         </div>
       </div>

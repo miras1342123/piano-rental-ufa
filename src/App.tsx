@@ -21,6 +21,7 @@ import ManagerBubble from './components/layout/ManagerBubble';
 import PianoDetailsPage from './components/ui/PianoDetailsPage';
 import { pianos } from './data/pianos';
 import { restoreScroll } from './utils/scrollMemory';
+import Reveal from './components/ui/Reveal';
 
 // Карточка "Подробнее" открывает не всплывающее окно, а полноценную
 // страницу модели по адресу вида #piano/yamaha-p35b. Так работает кнопка
@@ -64,20 +65,20 @@ function App() {
       <ScrollProgress />
       <Header />
       <main>
-        <Hero />
-        <StatsStrip />
-        <WhyRent />
-        <PianoCatalog />
-        <Pricing />
-        <Equipment />
-        <TrustMarquee />
-        <RentalSteps />
-        <Advantages />
-        <Reviews />
-        <FAQ />
-        <Contract />
-        <Location />
-        <ContactCTA />
+        <Reveal y={18}><Hero /></Reveal>
+        <Reveal delay={40}><StatsStrip /></Reveal>
+        <Reveal><WhyRent /></Reveal>
+        <Reveal><PianoCatalog /></Reveal>
+        <Reveal><Pricing /></Reveal>
+        <Reveal><Equipment /></Reveal>
+        <Reveal y={14}><TrustMarquee /></Reveal>
+        <Reveal><RentalSteps /></Reveal>
+        <Reveal><Advantages /></Reveal>
+        <Reveal><Reviews /></Reveal>
+        <Reveal><FAQ /></Reveal>
+        <Reveal><Contract /></Reveal>
+        <Reveal><Location /></Reveal>
+        <Reveal y={18}><ContactCTA /></Reveal>
       </main>
       <Footer />
       <MobileStickyCTA />
