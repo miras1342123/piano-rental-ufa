@@ -133,3 +133,46 @@
   scrollbar-width: thin;
   scrollbar-color: var(--color-brass) transparent;
 }
+
+/* Мобильная навигация: меньше мерцания и аккуратное появление пунктов */
+@media (max-width: 767px) {
+  header {
+    isolation: isolate;
+  }
+
+  .mobile-menu-link {
+    width: 100%;
+    padding: 0.65rem 0.75rem;
+    border-radius: 0.85rem;
+    animation: mobileMenuItemIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .mobile-menu-link:nth-child(2) { animation-delay: 40ms; }
+  .mobile-menu-link:nth-child(3) { animation-delay: 80ms; }
+  .mobile-menu-link:nth-child(4) { animation-delay: 120ms; }
+  .mobile-menu-link:nth-child(5) { animation-delay: 160ms; }
+  .mobile-menu-link:nth-child(6) { animation-delay: 200ms; }
+  .mobile-menu-link:nth-child(7) { animation-delay: 240ms; }
+}
+
+@keyframes mobileMenuItemIn {
+  from {
+    opacity: 0;
+    transform: translate3d(12px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

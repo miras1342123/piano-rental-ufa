@@ -62,7 +62,9 @@ export default function PianoCard({ piano, featured = false }: PianoCardProps) {
 
       <div
         className={`relative overflow-hidden bg-cream cursor-pointer ${
-          featured ? 'md:w-2/5 md:flex-shrink-0' : 'w-full aspect-[4/3]'
+          featured
+            ? 'md:w-2/5 md:flex-shrink-0 md:min-h-[360px]'
+            : 'w-full aspect-[4/3]'
         }`}
         onClick={openDetails}
         onMouseEnter={startCycling}
@@ -72,7 +74,7 @@ export default function PianoCard({ piano, featured = false }: PianoCardProps) {
           key={gallery ? gallery[hoverImage] : image}
           src={gallery ? gallery[hoverImage] : image}
           alt={name}
-          className="w-full h-full object-cover transition-transform duration-700 ease-premium group-hover:scale-110"
+          className="w-full h-full object-cover md:object-contain p-0 md:p-4 transition-transform duration-700 ease-premium group-hover:scale-[1.03] md:group-hover:scale-[1.04]"
           style={{ animation: 'cardFade 0.3s ease-out' }}
           onError={handleImageError}
         />

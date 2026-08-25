@@ -1,4 +1,4 @@
-import { Phone, Send } from 'lucide-react';
+import { Phone, MessageCircle } from 'lucide-react';
 import { contacts } from '../../data/contacts';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
 
@@ -16,15 +16,15 @@ export default function MobileStickyCTA() {
         <Phone size={22} />
         <span className="text-xs mt-1">Позвонить</span>
       </a>
-      {contacts.telegram && (
+      {contacts.max && (
         <a
-          href={contacts.telegram}
+          href={contacts.max}
           target="_blank"
           rel="noopener noreferrer"
           className="flex flex-col items-center text-graphite/70 hover:text-brass transition-colors"
         >
-          <Send size={22} />
-          <span className="text-xs mt-1">Telegram</span>
+          <MessageCircle size={22} />
+          <span className="text-xs mt-1">MAX</span>
         </a>
       )}
     </div>

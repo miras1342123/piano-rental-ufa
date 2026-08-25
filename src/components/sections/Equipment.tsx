@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+import { CircleCheck, CircleX } from 'lucide-react';
 import { useInView } from '../../hooks/useInView';
 import { equipmentItems } from '../../data/equipment';
 import SectionHeading from '../ui/SectionHeading';
@@ -54,18 +55,18 @@ export default function Equipment() {
                   <Badge variant="primary">{item.type}</Badge>
                 </div>
                 <ul className="mt-4 space-y-2">
-                  <li className="text-sm font-medium text-graphite/70">✅ Плюсы:</li>
+                  <li className="flex items-center gap-2 text-sm font-medium text-graphite/70"><CircleCheck size={17} className="text-brass" /> Плюсы</li>
                   {item.pros.map((pro) => (
                     <li key={pro} className="text-sm text-graphite/80 flex items-start gap-2">
-                      <span className="text-brass">+</span> {pro}
+                      <CircleCheck size={16} className="mt-0.5 shrink-0 text-brass" /> {pro}
                     </li>
                   ))}
                 </ul>
                 <ul className="mt-3 space-y-2">
-                  <li className="text-sm font-medium text-graphite/70">❌ Минусы:</li>
+                  <li className="flex items-center gap-2 text-sm font-medium text-graphite/70"><CircleX size={17} className="text-graphite/45" /> Минусы</li>
                   {item.cons.map((con) => (
                     <li key={con} className="text-sm text-graphite/60 flex items-start gap-2">
-                      <span className="text-red-400">−</span> {con}
+                      <CircleX size={16} className="mt-0.5 shrink-0 text-graphite/35" /> {con}
                     </li>
                   ))}
                 </ul>

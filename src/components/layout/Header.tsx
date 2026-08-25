@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, Send, MessageCircle } from 'lucide-react';
+import { Menu, X, MessageCircle } from 'lucide-react';
 import Button from '../ui/Button';
 import { contacts } from '../../data/contacts';
 
@@ -64,15 +64,15 @@ export default function Header() {
             <Button
               variant="primary"
               size="sm"
-              icon={<Send size={16} />}
-              onClick={() => window.open(contacts.telegram, '_blank')}
+              icon={<MessageCircle size={16} />}
+              onClick={() => window.open(contacts.max, '_blank')}
             >
-              Написать в Telegram
+              Написать в MAX
             </Button>
           </div>
 
           <button
-            className="md:hidden text-graphite p-2"
+            className="md:hidden text-graphite p-2 rounded-xl transition-all duration-300 hover:bg-brass/10 active:scale-90"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -82,16 +82,16 @@ export default function Header() {
       </div>
 
       <div
-        className={`md:hidden fixed inset-0 top-16 bg-cream shadow-2xl transition-transform duration-300 ease-in-out ${
-          isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+        className={`md:hidden fixed left-0 right-0 top-16 h-[calc(100dvh-4rem)] z-[60] overflow-y-auto overscroll-contain bg-cream shadow-2xl ring-1 ring-graphite/5 transition-[transform,opacity] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform [backface-visibility:hidden] ${
+          isMobileMenuOpen ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'
         }`}
       >
-        <div className="flex flex-col items-start p-6 space-y-6 text-lg font-medium">
+        <div className="flex min-h-full flex-col items-start p-6 pb-10 gap-5 text-lg font-medium">
           {navItems.map((item) => (
             <a
               key={item.label}
               href={item.href}
-              className="text-graphite hover:text-brass transition-colors"
+              className="mobile-menu-link text-graphite hover:text-brass transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {item.label}
@@ -100,19 +100,8 @@ export default function Header() {
           <Button
             variant="primary"
             size="md"
-            icon={<Send size={18} />}
-            className="mt-4"
-            onClick={() => {
-              setIsMobileMenuOpen(false);
-              window.open(contacts.telegram, '_blank');
-            }}
-          >
-            Написать в Telegram
-          </Button>
-          <Button
-            variant="outline"
-            size="md"
             icon={<MessageCircle size={18} />}
+            className="mt-4 w-full"
             onClick={() => {
               setIsMobileMenuOpen(false);
               window.open(contacts.max, '_blank');
