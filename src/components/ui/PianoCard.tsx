@@ -3,6 +3,7 @@ import { Images } from 'lucide-react';
 import type { Piano } from '../../data/pianos';
 import { contacts } from '../../data/contacts';
 import Button from './Button';
+import { rememberScroll } from '../../utils/scrollMemory';
 
 interface PianoCardProps {
   piano: Piano;
@@ -43,6 +44,7 @@ export default function PianoCard({ piano, featured = false }: PianoCardProps) {
   };
 
   const openDetails = () => {
+    rememberScroll();
     window.location.hash = `piano/${slug}`;
   };
 

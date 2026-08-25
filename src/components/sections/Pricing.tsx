@@ -23,18 +23,18 @@ export default function Pricing() {
           <table className="w-full text-left border-collapse">
             <thead>
               <tr className="border-b-2 border-graphite/10">
-                <th className="py-3 px-4 text-sm font-semibold uppercase tracking-wider text-graphite/50">Модель</th>
-                <th className="py-3 px-4 text-sm font-semibold uppercase tracking-wider text-graphite/50 text-right">1 неделя</th>
-                <th className="py-3 px-4 text-sm font-semibold uppercase tracking-wider text-graphite/50 text-right">2 недели</th>
-                <th className="py-3 px-4 text-sm font-semibold uppercase tracking-wider text-graphite/50 text-right">Месяц</th>
+                <th className="py-3 px-4 text-sm font-semibold uppercase tracking-wider text-graphite/50 whitespace-nowrap">Модель</th>
+                <th className="py-3 px-4 text-sm font-semibold uppercase tracking-wider text-graphite/50 text-right whitespace-nowrap">1 неделя</th>
+                <th className="py-3 px-4 text-sm font-semibold uppercase tracking-wider text-graphite/50 text-right whitespace-nowrap">2 недели</th>
+                <th className="py-3 px-4 text-sm font-semibold uppercase tracking-wider text-graphite/50 text-right whitespace-nowrap">Месяц</th>
               </tr>
             </thead>
             <tbody>
               {pricingData.map((item) => (
                 <tr key={item.name} className="border-b border-graphite/5 hover:bg-brass/5 transition-colors duration-300">
-                  <td className="py-4 px-4 font-medium text-graphite">{item.name}</td>
+                  <td className="py-4 px-4 font-medium text-graphite whitespace-nowrap">{item.name}</td>
                   {item.prices.map((p) => (
-                    <td key={p.period} className="py-4 px-4 text-right text-graphite/80">
+                    <td key={p.period} className="py-4 px-4 text-right text-graphite/80 whitespace-nowrap">
                       {p.price} ₽
                     </td>
                   ))}

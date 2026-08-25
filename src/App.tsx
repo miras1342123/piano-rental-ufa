@@ -20,6 +20,7 @@ import MobileStickyCTA from './components/layout/MobileStickyCTA';
 import ManagerBubble from './components/layout/ManagerBubble';
 import PianoDetailsPage from './components/ui/PianoDetailsPage';
 import { pianos } from './data/pianos';
+import { restoreScroll } from './utils/scrollMemory';
 
 // Карточка "Подробнее" открывает не всплывающее окно, а полноценную
 // страницу модели по адресу вида #piano/yamaha-p35b. Так работает кнопка
@@ -43,12 +44,18 @@ function App() {
   const activePiano = activeSlug ? pianos.find((p) => p.slug === activeSlug) ?? null : null;
 
   const closeDetails = () => {
-    // Возвращаемся в каталог и плавно прокручиваем к нему
+    // Возвращаемся туда же, где пользователь был до открытия карточки.
+    // Если позиция почему-то не сохранилась — как и раньше, едем к каталогу.
     window.location.hash = '';
     window.history.replaceState(null, '', window.location.pathname + window.location.search);
     setActiveSlug(null);
+    const savedY = restoreScroll();
     requestAnimationFrame(() => {
-      document.getElementById('catalog')?.scrollIntoView({ behavior: 'smooth' });
+      if (savedY !== null) {
+        window.scrollTo(0, savedY);
+      } else {
+        document.getElementById('catalog')?.scrollIntoView({ behavior: 'smooth' });
+      }
     });
   };
 

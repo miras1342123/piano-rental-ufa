@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { ArrowLeft, X, ChevronLeft, ChevronRight, Send, Phone, Check } from 'lucide-react';
+import { ArrowLeft, X, ChevronLeft, ChevronRight, MessageCircle, Phone, Check } from 'lucide-react';
 import type { Piano } from '../../data/pianos';
 import { contacts } from '../../data/contacts';
 import Button from './Button';
@@ -229,10 +229,10 @@ export default function PianoDetailsPage({ piano, onClose }: Props) {
             variant="primary"
             size="lg"
             className="flex-1 min-w-[160px]"
-            icon={<Send size={18} />}
-            onClick={() => window.open(contacts.telegram, '_blank')}
+            icon={<MessageCircle size={18} />}
+            onClick={() => window.open(contacts.max, '_blank')}
           >
-            Написать в Telegram
+            Написать в MAX
           </Button>
           <Button
             variant="outline"

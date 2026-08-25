@@ -8,9 +8,7 @@ interface Stat {
 }
 
 const stats: Stat[] = [
-  { value: 4, suffix: '', label: 'модели в наличии' },
   { value: 1400, suffix: ' ₽', label: 'аренда от / неделя' },
-  { value: 24, suffix: ' ч', label: 'ответим быстро' },
   { value: 0, suffix: ' ₽', label: 'скрытых платежей' },
 ];
 
@@ -61,8 +59,8 @@ function StatItem({ stat, delay }: { stat: Stat; delay: number }) {
 
 export default function StatsStrip() {
   return (
-    <div className="bg-graphite py-10 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-5xl mx-auto grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-4">
+    <div className="hidden sm:block bg-brass py-10 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-5xl mx-auto grid grid-cols-2 gap-6 sm:gap-4">
         {stats.map((stat, idx) => (
           <StatItem key={stat.label} stat={stat} delay={idx * 100} />
         ))}

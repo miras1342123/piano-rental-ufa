@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, Send } from 'lucide-react';
+import { Menu, X, Send, MessageCircle } from 'lucide-react';
 import Button from '../ui/Button';
 import { contacts } from '../../data/contacts';
 
@@ -82,7 +82,7 @@ export default function Header() {
       </div>
 
       <div
-        className={`md:hidden fixed inset-0 top-16 bg-cream/95 backdrop-blur-xl transition-transform duration-300 ease-in-out ${
+        className={`md:hidden fixed inset-0 top-16 bg-cream shadow-2xl transition-transform duration-300 ease-in-out ${
           isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
@@ -108,6 +108,17 @@ export default function Header() {
             }}
           >
             Написать в Telegram
+          </Button>
+          <Button
+            variant="outline"
+            size="md"
+            icon={<MessageCircle size={18} />}
+            onClick={() => {
+              setIsMobileMenuOpen(false);
+              window.open(contacts.max, '_blank');
+            }}
+          >
+            Написать в MAX
           </Button>
         </div>
       </div>

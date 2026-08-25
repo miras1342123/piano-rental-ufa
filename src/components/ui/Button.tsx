@@ -16,7 +16,7 @@ export default function Button({
   ...props
 }: ButtonProps) {
   const base =
-    'inline-flex items-center justify-center gap-2 font-medium rounded-full transition-all duration-300 ease-premium focus:outline-none focus:ring-2 focus:ring-brass/50 disabled:opacity-50';
+    'inline-flex items-center justify-center gap-2 font-medium rounded-full whitespace-nowrap transition-all duration-300 ease-premium focus:outline-none focus:ring-2 focus:ring-brass/50 disabled:opacity-50';
 
   const variants = {
     primary:

@@ -12,7 +12,7 @@ export default function Advantages() {
       <div className="max-w-6xl mx-auto">
         <SectionHeading
           title="Почему выбирают нас"
-          subtitle="Мы любим своё дело и отвечаем за каждый инструмент"
+          subtitle="Мы не просто «сдать и забыть». Мы рядом, пока инструмент у вас, и всегда на связи"
         />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">

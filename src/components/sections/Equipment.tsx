@@ -16,7 +16,12 @@ export default function Equipment() {
           subtitle="Всё необходимое для комфортных занятий"
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+        <p className="mt-6 max-w-2xl mx-auto text-center text-graphite/70 leading-relaxed">
+          Вместе с пианино вы получаете педаль, пюпитр, провод питания и подставку —
+          она бывает двух видов, выбирайте, какая удобнее:
+        </p>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
           {equipmentItems.map((item, idx) => (
             <div
               key={item.id}

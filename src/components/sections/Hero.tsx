@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { Send, CheckCircle } from 'lucide-react';
+import { Send, CheckCircle, MessageCircle } from 'lucide-react';
 import Button from '../ui/Button';
 import { contacts } from '../../data/contacts';
 
@@ -52,7 +52,7 @@ export default function Hero() {
               <span className="text-brass">в Уфе</span>
             </h1>
             <p className="text-lg sm:text-xl text-graphite/70 max-w-lg font-body">
-              Попробуйте инструмент перед покупкой. Никаких обязательств – только музыка и комфорт.
+              Попробуйте инструмент перед покупкой.
             </p>
           </div>
 
@@ -73,6 +73,14 @@ export default function Hero() {
               onClick={() => window.open(contacts.telegram, '_blank')}
             >
               Написать в Telegram
+            </Button>
+            <Button
+              variant="outline"
+              size="lg"
+              icon={<MessageCircle size={20} />}
+              onClick={() => window.open(contacts.max, '_blank')}
+            >
+              Написать в MAX
             </Button>
           </div>
 
